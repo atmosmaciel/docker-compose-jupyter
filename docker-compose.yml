@@ -1,0 +1,18 @@
+version: '3'
+services:
+    panda:
+        image: pandare/panda
+
+    matlabploit:
+        image: aaron465/matplotlib
+
+    web:
+        image: jupyter/all-spark-notebook
+        ports:
+            - "8000:8888"
+        depends_on:
+            - panda
+            - matlabploit
+        links:
+            - panda
+            - matlabploit
